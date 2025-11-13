@@ -54,7 +54,7 @@ def speak(text):
 
 load_dotenv()
 
-API_KEY = 'AIzaSyDTI8yu2bU2WDSK1MlqXlLN5WBPuIUTV3A'
+API_KEY = 'KEY'
 
 genai.configure(
     api_key = API_KEY
