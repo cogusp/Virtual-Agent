@@ -15,15 +15,19 @@
   <h4> 🔗 https://drive.google.com/drive/folders/1EgbDVwatFQKg3a7Dz0egHLqMvwImLZQ- </h4>
   <h4> 📽️ https://youtu.be/YjeXpHNuxLM </h4>
 
-  <br>
+  <br><br>
 
   <!-- Tools -->
   <h2> Engine </h2>
   <h4> 👾 Unreal Engine 5.4 </h4>
 
   <h2> Tool </h2>
-  <h4> 🛠️ Gemini API   🛠️ Python   🛠️ Meta Human</h4>
+  <h4> 🛠️ Gemini API </h4>
+  <h4> 🛠️ Python </h4>
+  <h4> 🛠️ Meta Human </h4>
 
+  <br>
+  
   <h2> Flow </h2>
   Python으로 Gemini API와 연동된 AI 스피커를 제작했습니다.<br>
   사용자의 질문은 Unreal Engine에서 녹음 및 저장했습니다.<br>
