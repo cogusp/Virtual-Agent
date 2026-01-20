@@ -64,7 +64,7 @@ def get_ai_response(prompt: str) -> str:        # 문자열 prompt가 들어오�
         return "죄송합니다. 현재 답변을 가져오지 못했습니다."
 
 # -----------------------
-# 사용자 음성에 따라 작업을 결정하는 함수
+# 사용자 요청에 따라 작업을 결정하는 함수
 # -----------------------
 def handle_user_input(text: str):
     if not text:
