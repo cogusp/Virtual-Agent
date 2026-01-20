@@ -25,7 +25,7 @@ chat = model.start_chat(history=[])
 r = sr.Recognizer()
 m = sr.Microphone()
 
-#오디오 처리 큐 (동시성 문제 방지용)
+# 오디오 처리 큐 (동시성 문제 방지용)
 audio_queue = Queue()
 
 # -----------------------
