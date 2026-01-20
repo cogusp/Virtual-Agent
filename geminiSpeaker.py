@@ -12,16 +12,16 @@ from queue import Queue
 # -----------------------
 load_dotenv()
 
-# .env에 저장된 키 불러오기
+# 환경 변수에(.env)에 저장된 API 키 불러오기
 API_KEY = os.getenv("GOOGLE_API_KEY")
 if not API_KEY:
     raise ValueError("GOOGLE_API_KEY not found in environment variables!!")
 
 genai.configure(api_key = API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-pro')    # Gemini-pro로 모델 설정
 chat = model.start_chat(history=[])
 
-# 음성 인식기 초기화
+# 음성 인식(마이크 및 녹음) 초기화
 r = sr.Recognizer()
 m = sr.Microphone()
 
@@ -29,18 +29,18 @@ m = sr.Microphone()
 audio_queue = Queue()
 
 # -----------------------
-# 음성 출력 (TTS)
+# AI 음성 출력을 위한 함수
 # -----------------------
 def speak(text):
     if not text:
         return
         
     print(f"[AI] {text}")
-    file_name = f"voice_{int(time.time())}.mp3"
-    tts = gTTS(text=text, lang='ko')
-    tts.save(file_name)
+    file_name = f"voice_{int(time.time())}.mp3"    # 음성 파일명 설정
+    tts = gTTS(text=text, lang='ko')               # TTS 변환 과정
+    tts.save(file_name)                            # 음성 파일 저장
     try:
-        playsound(file_name)
+        playsound(file_name)                       # 음성 파일 재생
     finally:
         # Auto remove the voice.mp3 file
         if os.path.exists(file_name):
@@ -52,19 +52,19 @@ def speak(text):
     #audio_fast.export(file_name, format="mp3")
 
 # -----------------------
-# AI 응답 처리
+# AI의 응답을 처리하는 함수
 # -----------------------
-def get_ai_response(prompt: str) -> str:
+def get_ai_response(prompt: str) -> str:        # 문자열 prompt가 들어오며 반환형은 문자열
     """" GEMINI API로부터 응답을 받아옵니다. """
     try:
-        response = chat.send_message(prompt)
-        return response.text.strip()
+        response = chat.send_message(prompt)    # 질문 전송 및 응답 저장
+        return response.text.strip()            # 공백 제거 후 반
     except Exception as e:
         print(f"GEMINI API Error: {e}")
         return "죄송합니다. 현재 답변을 가져오지 못했습니다."
 
 # -----------------------
-# 입력 처리
+# 사용자 음성에 따라 작업을 결정하는 함수
 # -----------------------
 def handle_user_input(text: str):
     if not text:
@@ -79,16 +79,16 @@ def handle_user_input(text: str):
     speak(answer)
 
 # -----------------------
-# 음성 인식 콜백
+# 사용자 음성을 텍스트로 바꾸는 함수
 # -----------------------
 def listen_callback(recognizer, audio):
     """ 백그라운드에서 마이크 입력을 계속 듣는 콜백 """
     try:
-        text = recognizer.recognize_google(audio, language='ko')
+        text = recognizer.recognize_google(audio, language='ko')    # 사용자 음성을 한국어 텍스트로 변경
         print(f"[사용자] {text}")
-        audio_queue.put(text)
-    except sr.UnknownValueError:
-        print("인식 실패")  # failed
+        audio_queue.put(text)                                       # 사용자 음성 텍스트를 큐에 저장
+    except sr.UnknownValueError:       # failed
+        print("인식 실패")  
     except sr.RequestError as e:
         print(f"Google Speech API Error: {e}")  # API key Error (ex. Network)
 
@@ -103,9 +103,9 @@ def main():
     # Loop
     while True:
         try:
-            if not audio_queue.empty():
-                user_input = audio_queue.get()
-                handle_user_input(user_input)
+            if not audio_queue.empty():            # 사용자가 말한 경우
+                user_input = audio_queue.get()     # 큐에서 텍스트를 꺼내
+                handle_user_input(user_input)      # 작업을 결정하는 함수 호출
             time.sleep(0.1)
         except KeyboardInterrupt:
             print("\n종료 요청 감지")
